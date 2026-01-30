@@ -3,54 +3,298 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Asher Peterson</title>
+    <title>Eric Asher Peterson - Cinematographer & Video Editor</title>
     <link rel="stylesheet" href="portfoliostyles.css"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+    <style>
+        /* Home Page Specific Styles */
+        .home-page {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .home-hero {
+            text-align: center;
+            padding: 60px 20px 50px;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        .home-hero h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(3.5rem, 10vw, 7rem);
+            letter-spacing: 6px;
+            margin: 0;
+            background: linear-gradient(135deg, #0066cc, #ff6b35);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.1;
+        }
+
+        .home-hero .tagline {
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            font-weight: 300;
+            color: #555;
+            margin: 20px auto 0;
+            max-width: 600px;
+            letter-spacing: 0.5px;
+            line-height: 1.6;
+        }
+
+        .section-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            letter-spacing: 3px;
+            text-align: center;
+            margin: 60px 0 40px;
+            color: #2c3e50;
+            animation: fadeInUp 0.8s ease-out 0.2s backwards;
+        }
+
+        /* Featured Reel Placeholder */
+        .reel-placeholder {
+            max-width: 1000px;
+            margin: 0 auto 60px;
+            padding: 0 20px;
+            animation: fadeInUp 0.8s ease-out 0.3s backwards;
+        }
+
+        .reel-wrapper {
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            transition: all 0.4s ease;
+        }
+
+        .reel-wrapper:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+        }
+
+        .reel-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            min-height: 500px;
+            aspect-ratio: 16 / 9;
+            border: none;
+            display: block;
+        }
+
+        .reel-placeholder-content {
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .reel-placeholder-icon {
+            font-size: 4rem;
+            opacity: 0.3;
+        }
+
+        .reel-placeholder-text {
+            font-size: 1.3rem;
+            color: #555;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #555;
+            margin: -20px auto 40px;
+            max-width: 600px;
+            line-height: 1.7;
+            animation: fadeInUp 0.8s ease-out 0.3s backwards;
+        }
+
+        /* Enhanced Video Grid */
+        .videos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px 20px 60px;
+        }
+
+        .video-wrapper {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: all 0.4s ease;
+            animation: fadeInUp 0.8s ease-out backwards;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .video-wrapper:nth-child(1) { animation-delay: 0.4s; }
+        .video-wrapper:nth-child(2) { animation-delay: 0.5s; }
+        .video-wrapper:nth-child(3) { animation-delay: 0.6s; }
+        .video-wrapper:nth-child(4) { animation-delay: 0.7s; }
+        .video-wrapper:nth-child(5) { animation-delay: 0.8s; }
+        .video-wrapper:nth-child(6) { animation-delay: 0.9s; }
+
+        .video-wrapper:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+        }
+
+        .video-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            min-height: 240px;
+            aspect-ratio: 16 / 9;
+            border: none;
+            display: block;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .videos {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            .reel-wrapper iframe,
+            .reel-placeholder-content {
+                min-height: 350px;
+            }
+        }
+    </style>
 </head>
-<body class="parent">
-        <header>
-            <h1>
-                Eric Asher Peterson
-            </h1>
-            <h2>Cinematographer and Video Editor</h2>
-            <h3> Wilmington, North Carolina</h3>
-            <nav>
-                <ul class="nav-menu">
-                    <li><a class="active" href="index.html">Home</a></li>
-                    <li><a href="Portfolio.html">About</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </nav>
-        </header>
-        <div class="left-sidebar">
-           
+<body class="parent home-page">
+    <header>
+        <h1>Eric Asher Peterson</h1>
+        <h2>Cinematographer and Video Editor</h2>
+        <h3>Wilmington, North Carolina</h3>
+        <nav>
+            <ul class="nav-menu">
+                <li><a class="active" href="index.html">Home</a></li>
+                <li><a href="Portfolio.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-        </div>
-        <!-- Main Content -->
-        <main>
-            <section class="intro">
-            </section>
+    <div class="left-sidebar"></div>
 
-            <div class="videos">
-                <iframe src="https://player.vimeo.com/video/779418646" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen>
-                    My largest short film yet, December 2022. I Camera Operated and was the majority Editor. I learned a lot from this short film as it was the biggest set I had worked on so far with about 17 people. Shot on a Blackmagic Design URSA Mini. Edited in Premiere. 
-                </iframe>
-                <iframe src="https://youtube.com/embed/JqHSAXndDUM?si=R0m_le7lFkcyrBB1" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
-                <iframe src="https://player.vimeo.com/video/763519733" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
-                <iframe src="https://youtube.com/embed/dW5A6_lHq5w?si=ccVvboNz9SmTMJac" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
-                <iframe src="https://youtube.com/embed/9pVfe7XTmVA" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
-                <iframe src="https://youtube.com/embed/MGOAyqu8SWU" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+    <main>
+        <!-- Hero Section -->
+        <section class="home-hero">
+            <h1>Creating</h1>
+            <p class="tagline">
+                Always learning. Always exploring. Always creating.
+            </p>
+        </section>
+
+        <!-- Featured Reel Placeholder -->
+        <h2 class="section-title">Featured Reel</h2>
+        <div class="reel-placeholder">
+            <div class="reel-wrapper">
+                <!-- Replace this placeholder div with your reel iframe when ready -->
+                <!-- Example: <iframe src="YOUR_REEL_URL_HERE" allow="autoplay; fullscreen" allowfullscreen></iframe> -->
+                <div class="reel-placeholder-content">
+                    <div class="reel-placeholder-icon">🎬</div>
+                    <p class="reel-placeholder-text">Reel Coming Soon</p>
+                </div>
             </div>
-        </main>
-        <div class="right-sidebar">
-          
-
         </div>
-        <!-- Footer -->
-        <footer>
-            <p></p>
-        </footer>
+
+        <!-- Recent Work Section -->
+        <h2 class="section-title">Recent Work</h2>
+
+        <div class="videos">
+            <div class="video-wrapper">
+                <iframe 
+                    src="https://player.vimeo.com/video/779418646" 
+                    allow="autoplay; fullscreen" 
+                    allowfullscreen
+                    title="Short Film Project - December 2022">
+                </iframe>
+            </div>
+            
+            <div class="video-wrapper">
+                <iframe 
+                    src="https://www.youtube.com/embed/MGOAyqu8SWU?si=DIA5xGBParcUusEE" 
+                    allow="autoplay; fullscreen" 
+                    allowfullscreen
+                    title="Video Project">
+                </iframe>
+            </div>
+            
+            <div class="video-wrapper">
+                <iframe 
+                    src="https://youtube.com/embed/JqHSAXndDUM?si=R0m_le7lFkcyrBB1" 
+                    allow="autoplay; fullscreen" 
+                    allowfullscreen
+                    title="Video Project">
+                </iframe>
+            </div>
+            
+            <div class="video-wrapper">
+                <iframe 
+                    src="https://player.vimeo.com/video/763519733" 
+                    allow="autoplay; fullscreen" 
+                    allowfullscreen
+                    title="Video Project">
+                </iframe>
+            </div>
+            
+            <div class="video-wrapper">
+                <iframe 
+                    src="https://youtube.com/embed/dW5A6_lHq5w?si=ccVvboNz9SmTMJac" 
+                    allow="autoplay; fullscreen" 
+                    allowfullscreen
+                    title="Video Project">
+                </iframe>
+            </div>
+            
+            <div class="video-wrapper">
+                <iframe 
+                    src="https://youtube.com/embed/9pVfe7XTmVA" 
+                    allow="autoplay; fullscreen" 
+                    allowfullscreen
+                    title="Video Project">
+                </iframe>
+            </div>
+        </div>
+    </main>
+
+    <div class="right-sidebar"></div>
+
+    <footer>
+        <p>&copy; 2025 Eric Asher Peterson | Cinematographer & Video Editor</p>
+    </footer>
 </body>
 </html>
