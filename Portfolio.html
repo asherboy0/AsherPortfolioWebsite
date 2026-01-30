@@ -1,69 +1,315 @@
-
-<!-- portfolio.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
+    <title>About - Eric Asher Peterson</title>
     <link rel="stylesheet" href="portfoliostyles.css"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* About Page Specific Styles */
+        .about-page {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .about-hero {
+            text-align: center;
+            padding: 60px 20px 40px;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        .about-hero h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            letter-spacing: 3px;
+            margin: 0 0 10px 0;
+            background: linear-gradient(135deg, #0066cc, #ff6b35);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .about-hero .subtitle {
+            font-size: clamp(1rem, 2.5vw, 1.4rem);
+            font-weight: 300;
+            color: #2c3e50;
+            margin: 10px 0 30px;
+            letter-spacing: 1px;
+        }
+
+        .profile-section {
+            max-width: 900px;
+            margin: 0 auto 60px;
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            padding: 0 20px;
+            animation: fadeInUp 0.8s ease-out 0.2s backwards;
+        }
+
+        .profile-image-container {
+            flex-shrink: 0;
+        }
+
+        .profile-image {
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 
+                0 20px 60px rgba(0, 0, 0, 0.3),
+                0 0 0 15px rgba(255, 255, 255, 0.1);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .profile-image:hover {
+            transform: scale(1.05) rotate(2deg);
+            box-shadow: 
+                0 25px 70px rgba(0, 0, 0, 0.4),
+                0 0 0 15px rgba(255, 255, 255, 0.2);
+        }
+
+        .profile-text {
+            flex: 1;
+        }
+
+        .profile-text p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #34495e;
+            margin: 0;
+        }
+
+        .content-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px 60px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .info-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeInUp 0.8s ease-out backwards;
+        }
+
+        .info-card:nth-child(1) { animation-delay: 0.3s; }
+        .info-card:nth-child(2) { animation-delay: 0.4s; }
+        .info-card:nth-child(3) { animation-delay: 0.5s; }
+
+        .info-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+        }
+
+        .info-card h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            letter-spacing: 2px;
+            margin: 0 0 20px 0;
+            color: #2c3e50;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .info-card h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #0066cc, #ff6b35);
+            border-radius: 2px;
+        }
+
+        .info-card p {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #555;
+            margin: 0 0 15px 0;
+        }
+
+        .info-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .info-card li {
+            font-size: 1rem;
+            color: #555;
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .info-card li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #0066cc;
+            font-weight: bold;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .skill-item {
+            background: rgba(0, 102, 204, 0.1);
+            padding: 12px 16px;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            color: #2c3e50;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .skill-item:hover {
+            background: rgba(0, 102, 204, 0.2);
+            transform: scale(1.05);
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .profile-section {
+                flex-direction: column;
+                text-align: center;
+                gap: 30px;
+            }
+
+            .profile-image {
+                width: 220px;
+                height: 220px;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
-<body>
-    <div class="parent">
-        <header>
-            <h1>
-                Eric Asher Peterson
-            </h1>
-            <h2>Cinematographer and Video Editor</h2>
-            <h3> Wilmington, North Carolina</h3>
-            <nav>
-                <ul class="nav-menu">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a class="active"href="Portfolio.html">About</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+<body class="parent about-page">
+    <header>
+        <h1>Eric Asher Peterson</h1>
+        <h2>Cinematographer and Video Editor</h2>
+        <h3>Wilmington, North Carolina</h3>
+        <nav>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a class="active" href="Portfolio.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="left-sidebar"></div>
+
+    <main>
+        <!-- Hero Section -->
+        <div class="about-hero">
+            <h1>About Me</h1>
+            <p class="subtitle">Filmmaker | Collaborator | Editor</p>
+        </div>
+
+        <!-- Profile Section -->
+        <section class="profile-section">
+            <div class="profile-image-container">
+                <img class="profile-image" src="me.jpg" alt="Eric Asher Peterson">
+            </div>
+            <div class="profile-text">
+                <p>
+                    My name is Asher Peterson, and I'm a student filmmaker and videographer who specializes in editing and camera work. But I'm always excited to learn new things and take on new challenges in any field of film. As a passionate individual, I thrive in group settings where I can collaborate and work alongside my peers in the film industry. In my experience, teamwork is essential to successful filmmaking, and I take pride in being a strong collaborator.
+                </p>
+            </div>
+        </section>
+
+        <!-- Content Grid -->
+        <div class="content-grid">
+            <!-- Education Card -->
+            <div class="info-card">
+                <h2>Education</h2>
+                <p><strong>University of North Carolina Wilmington</strong></p>
+                <p>Graduated December 2025</p>
+                <ul>
+                    <li>BA in Film Studies</li>
+                    <li>Minor in Digital Arts</li>
                 </ul>
-            </nav>
-        </header>
-        <div class="left-sidebar">
-           
+            </div>
 
+            <!-- Skills Card -->
+            <div class="info-card">
+                <h2>Technical Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-item">Adobe Premiere Pro</div>
+                    <div class="skill-item">DaVinci Resolve</div>
+                    <div class="skill-item">Adobe Suite</div>
+                    <div class="skill-item">Pro Tools</div>
+                    <div class="skill-item">Autodesk Maya 3D</div>
+                    <div class="skill-item">Camera Operation</div>
+                    <div class="skill-item">Video Editing</div>
+                    <div class="skill-item">Sound Design</div>
+                    <div class="skill-item">Color Grading</div>
+                    <div class="skill-item">Blender</div>
+                </div>
+            </div>
+
+            <!-- Philosophy Card -->
+            <div class="info-card">
+                <h2>My Approach</h2>
+                <p>
+                    I am constantly seeking new opportunities to develop my skills and explore new avenues of creativity. My experience with a range of software has allowed me to be versatile and adaptable to any creative project, whether it's video editing, sound design, or 3D modeling.
+                </p>
+                <p>
+                    By working with a team of other students, I have been able to learn and grow as a filmmaker, gaining invaluable experience and insight that shapes my approach to every project.
+                </p>
+            </div>
         </div>
+    </main>
 
-        <!-- Portfolio Table -->
-        <main>
-            <section id="portfolio">
-                <h1></h1>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Senior at University of North Carolina Wilmington.</th>
-                            <th>BA Majoring in Film Studies and Minoring in Digital Arts.</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td> <img class="format" src="me.jpg" alt="A handsome young man who you should hire"> </td>
-                            <td>As a passionate individual, I thrive in group settings where I can collaborate and work alongside my peers in the film industry. In my experience, teamwork is essential to successful filmmaking, and I take pride in being a strong collaborator. By working with a team of other students, I have been able to learn and grow as a filmmaker, gaining invaluable experience and insight.</td>
-                        </tr>
-                        <tr>
-                            <td>My name is Asher Peterson and I'm a student filmmaker and videographer who specializes in editing and camera work. But, I'm always excited to learn new things and take on new challenges in any field of film. </td>
-                            <td>I am constantly seeking new opportunities to develop my skills and explore new avenues of creativity. My experience with a range of software, including the Adobe suite, Davinci Resolve, Pro Tools, and Autodesk Maya 3D, has allowed me to be versatile and adaptable to any creative project, whether it's video editing, sound design, or 3D.</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </section>
-        </main>
-        <div class="right-sidebar">
-          
+    <div class="right-sidebar"></div>
 
-        </div>
-        <!-- Footer -->
-        <footer>
-            <p></p>
-        </footer>
-    </div>
+    <footer>
+        <p>&copy; 2025 Eric Asher Peterson | Cinematographer & Video Editor</p>
+    </footer>
 </body>
 </html>
