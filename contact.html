@@ -1,74 +1,337 @@
-
-<!-- contact.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Me</title>
+    <title>Contact - Eric Asher Peterson</title>
     <link rel="stylesheet" href="portfoliostyles.css"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* Contact Page Specific Styles */
+        .contact-page {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .contact-hero {
+            text-align: center;
+            padding: 60px 20px 40px;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        .contact-hero h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            letter-spacing: 3px;
+            margin: 0 0 10px 0;
+            background: linear-gradient(135deg, #0066cc, #ff6b35);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .contact-hero .subtitle {
+            font-size: clamp(1rem, 2.5vw, 1.4rem);
+            font-weight: 300;
+            color: #2c3e50;
+            margin: 10px 0 30px;
+            letter-spacing: 1px;
+        }
+
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px 60px;
+        }
+
+        .contact-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            padding: 50px 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            animation: fadeInUp 0.8s ease-out 0.3s backwards;
+        }
+
+        .contact-intro {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .contact-intro p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+            margin: 0;
+        }
+
+        .contact-methods {
+            display: grid;
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 25px;
+            background: rgba(0, 102, 204, 0.05);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+        }
+
+        .contact-item:hover {
+            background: rgba(0, 102, 204, 0.1);
+            border-left-color: #0066cc;
+            transform: translateX(5px);
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #0066cc, #ff6b35);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 1.5rem;
+            color: white;
+            box-shadow: 0 4px 15px rgba(0, 102, 204, 0.3);
+        }
+
+        .contact-details {
+            flex: 1;
+        }
+
+        .contact-label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #888;
+            margin: 0 0 5px 0;
+            font-weight: 600;
+        }
+
+        .contact-value {
+            font-size: 1.2rem;
+            color: #2c3e50;
+            margin: 0;
+            font-weight: 500;
+        }
+
+        .contact-value a {
+            color: #0066cc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-value a:hover {
+            color: #ff6b35;
+        }
+
+        .availability {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px solid rgba(0, 102, 204, 0.1);
+        }
+
+        .availability-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, rgba(0, 200, 100, 0.1), rgba(0, 150, 80, 0.1));
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-weight: 500;
+            color: #00a060;
+            border: 2px solid rgba(0, 200, 100, 0.3);
+        }
+
+        .availability-badge::before {
+            content: '';
+            width: 10px;
+            height: 10px;
+            background: #00c864;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(0, 200, 100, 0.5);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            background: rgba(0, 102, 204, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #0066cc;
+            font-size: 1.3rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: linear-gradient(135deg, #0066cc, #ff6b35);
+            color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 102, 204, 0.3);
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.6;
+                transform: scale(1.1);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .contact-card {
+                padding: 35px 25px;
+            }
+
+            .contact-item {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+
+            .contact-value {
+                font-size: 1rem;
+            }
+        }
+    </style>
 </head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<script>
-    $(document).ready(function(){
-      $("form").submit(function(){
-        alert("Submitted!!!!!!!!!!!");
-      });
-    });
-    </script>
-<body>
-    <div class="parent">
-        <header>
-            <h1>
-                Eric Asher Peterson
-            </h1>
-            <h2>Cinematographer and Video Editor</h2>
-            <h3> Wilmington, North Carolina</h3>
-            <nav>
-                <ul class="nav-menu">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="Portfolio.html">About</a></li>
-                    <li><a class="active" href="contact.html">Contact</a></li>
-                </ul>
-            </nav>
-        </header>
-        <div class="left-sidebar">
-           
+<body class="parent contact-page">
+    <header>
+        <h1>Eric Asher Peterson</h1>
+        <h2>Cinematographer and Video Editor</h2>
+        <h3>Wilmington, North Carolina</h3>
+        <nav>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="Portfolio.html">About</a></li>
+                <li><a class="active" href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
+    <div class="left-sidebar"></div>
+
+    <main>
+        <!-- Hero Section -->
+        <div class="contact-hero">
+            <h1>Let's Work Together</h1>
+            <p class="subtitle">Get in touch for collaboration opportunities</p>
         </div>
-        <!-- Contact Form -->
-        <main>
-            <section id="contact">
-                <h1>Contact Me!</h1>
-                <p></p>
-                <form action="">
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" name="name" required>
 
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required>
+        <!-- Contact Container -->
+        <div class="contact-container">
+            <div class="contact-card">
+                <div class="contact-intro">
+                    <p>
+                        I'm always open to discussing new projects, creative ideas, 
+                        or opportunities to collaborate on film productions. 
+                        Feel free to reach out through any of the methods below.
+                    </p>
+                </div>
 
-                    <label for="message">Input what information you need me to know</label>
-                    <textarea id="message" name="message"></textarea>
+                <div class="contact-methods">
+                    <!-- Email -->
+                    <div class="contact-item">
+                        <div class="contact-icon">✉</div>
+                        <div class="contact-details">
+                            <p class="contact-label">Email</p>
+                            <p class="contact-value">
+                                <a href="mailto:asherpeterson1@gmail.com">asherpeterson1@gmail.com</a>
+                            </p>
+                        </div>
+                    </div>
 
-                    <label for="subscribe">Do you like my work?</label>
-                    <input type="checkbox" id="subscribe" name="subscribe">
+                    <!-- Phone -->
+                    <div class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <div class="contact-details">
+                            <p class="contact-label">Phone</p>
+                            <p class="contact-value">
+                                <a href="tel:+19103867529">+1 (910) 386-7529</a>
+                            </p>
+                        </div>
+                    </div>
 
-                    <button value="submit" type="submit">Send</button>
-                </form>
-            </section>
-        </main>
-        <div class="right-sidebar">
-          
+                    <!-- Location -->
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div class="contact-details">
+                            <p class="contact-label">Location</p>
+                            <p class="contact-value">Wilmington, North Carolina</p>
+                        </div>
+                    </div>
+                </div>
 
+                <!-- Availability Status -->
+                <div class="availability">
+                    <div class="availability-badge">
+                        Available for Projects
+                    </div>
+                </div>
+
+                <!-- Optional: Social Links (uncomment and update if you want to add these) -->
+                <!--
+                <div class="social-links">
+                    <a href="#" class="social-link" title="LinkedIn">in</a>
+                    <a href="#" class="social-link" title="Vimeo">V</a>
+                    <a href="#" class="social-link" title="Instagram">IG</a>
+                </div>
+                -->
+            </div>
         </div>
-        <!-- Footer -->
-        <footer>
-            <p></p>
-        </footer>
-    </div>
+    </main>
+
+    <div class="right-sidebar"></div>
+
+    <footer>
+        <p>&copy; 2025 Eric Asher Peterson | Cinematographer & Video Editor</p>
+    </footer>
 </body>
 </html>
