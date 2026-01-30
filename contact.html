@@ -1,0 +1,74 @@
+
+<!-- contact.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Me</title>
+    <link rel="stylesheet" href="https://student.uncw.edu/eap6799/Portfolio/portfoliostyles.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+      $("form").submit(function(){
+        alert("Submitted!!!!!!!!!!!");
+      });
+    });
+    </script>
+<body>
+    <div class="parent">
+        <header>
+            <h1>
+                Eric Asher Peterson
+            </h1>
+            <h2>Cinematographer and Video Editor</h2>
+            <h3> Wilmington, North Carolina</h3>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="https://student.uncw.edu/eap6799/Portfolio/PortfolioAsher.html">Home</a></li>
+                    <li><a href="https://student.uncw.edu/eap6799/Portfolio/portfolio.html">About</a></li>
+                    <li><a class="active" href="http://student.uncw.edu/eap6799/Portfolio/contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+        <div class="left-sidebar">
+           
+
+        </div>
+        <!-- Contact Form -->
+        <main>
+            <section id="contact">
+                <h1>Contact Me!</h1>
+                <p></p>
+                <form action="">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="message">Input what information you need me to know</label>
+                    <textarea id="message" name="message"></textarea>
+
+                    <label for="subscribe">Do you like my work?</label>
+                    <input type="checkbox" id="subscribe" name="subscribe">
+
+                    <button value="submit" type="submit">Send</button>
+                </form>
+            </section>
+        </main>
+        <div class="right-sidebar">
+          
+
+        </div>
+        <!-- Footer -->
+        <footer>
+            <p></p>
+        </footer>
+    </div>
+</body>
+</html>
